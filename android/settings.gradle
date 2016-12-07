@@ -1,0 +1,3 @@
+rootProject.name = 'orientationChangePlayground'
+
+include ':app'
