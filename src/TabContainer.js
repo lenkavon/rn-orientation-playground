@@ -13,6 +13,7 @@ import {
 const styles = StyleSheet.create({
   scrollTab: {
     flex: 1,
+    alignSelf: 'center'
   },
   tabContainer: {
     justifyContent: 'center',
@@ -50,14 +51,14 @@ export default class TabContainer extends Component {
           resizeMode="contain"
           style={{
             height: 80,
-            width: 150,
+            width: 145,
           }}
           source={{uri: item.url}}
         />
         <View
           style={{
             height: 30,
-            width: 150,
+            width: 145,
           }}
         >
           <Text>
@@ -77,13 +78,17 @@ export default class TabContainer extends Component {
     const dataSource = this.state.dataSource.cloneWithRows(tab.items);
 
     return (
-      <ListView
-        enableEmptySections
-        style={styles.scrollTab}
-        contentContainerStyle={styles.tabContainer}
-        dataSource={dataSource}
-        renderRow={this._renderItem}
-      />
+      <View style={styles.scrollTab}>
+        <Text style={{alignSelf: 'center'}}>{tab.name}</Text>
+        <ListView
+          enableEmptySections
+          style={styles.scrollTab}
+          contentContainerStyle={styles.tabContainer}
+          dataSource={dataSource}
+          renderRow={this._renderItem}
+          scrollRenderAheadDistance={3000}
+        />
+      </View>
     );
   }
 }
